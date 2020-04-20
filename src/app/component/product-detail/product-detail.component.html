@@ -1,0 +1,19 @@
+
+    <div class="row" *ngIf= "product" >
+		<div class="form">
+			<div class="card" >
+			<a href="#"><img class="card-img-top" src="{{product.img}}" alt=""></a>
+				<div class="card-body"  >
+            <h4 class="card-title">
+						<a href="#">{{product.name}}</a>
+					</h4>
+          
+					 <h5>${{product.price}} </h5> 
+					<h5>{{product.desc}} </h5> 
+				</div>
+        <div class="card-footer">
+					<button  class="btn btn-danger d-block w-100 btn-lg" routerLink="/product">Quay Lại</button><br>
+          <div>
+			</div>
+		</div>
+	</div>

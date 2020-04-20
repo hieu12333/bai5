@@ -1,0 +1,56 @@
+.oto{
+    width: 520px;
+    height: 400px;
+}
+
+h1{
+    /* text-align: center; */
+    color: rgb(10, 10, 10);
+}
+p{
+    font-size: 20px;
+}
+.img{
+    width: 500px;
+    height: 140px;
+}
+.d-block{
+    width: 1100px;
+    height: 350px;
+}
+.btn btnReg{
+background: red;
+}
+
+.giay{
+  border: 1px solid lightcoral;
+    border-width: 1px;
+    border-style: length;
+    border-color: peru;
+    margin: 0 40px;
+}
+.text{
+  padding-left: 70px;
+}
+.anh{
+  text-align: right;
+  padding-right: 70px;
+
+}
+.anh1{
+  text-align: left;
+  padding-right: 50px;
+
+}
+.giay1:hover{
+   background-color: white !important;
+   color:red !important;
+}
+.amh{
+width: 100%;
+height: 50px;
+}
+.anh1{
+width: 30px;
+height: 30px;
+}

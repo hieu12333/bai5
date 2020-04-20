@@ -1,0 +1,26 @@
+<app-index-admin></app-index-admin>
+<div class="container abc">
+ <form class="jumbotron ">
+<h1  class=" firstshadow text-danger" > Chỉnh sửa thông tin</h1>
+ <form *ngIf="product"> 
+	<div class="form-group">
+		<label for="">Name</label>
+		<input type="text" class="form-control"name="name" [(ngModel)]= "product.name">
+  </div>
+		<div class="form-group">
+			<label for="">Price</label>
+			<input type="number" class="form-control"name="price" [(ngModel)]= "product.price">
+  </div>
+			<div class="form-group">
+				<label for="">Desc</label>
+				<input type="text" class="form-control"name="desc" [(ngModel)]= "product.desc">
+  </div>
+				<div class="form-group">
+					<label for="">Img</label>
+					<input type="text" class="form-control" name="img" [(ngModel)]= "product.img">
+  </div>
+
+					<button  class="btn btn-primary" (click) = "UpdateProduct()"> Save </button>
+ </form> 
+ </form>
+</div>

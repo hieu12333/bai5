@@ -1,0 +1,38 @@
+<app-home></app-home>
+
+<div class="text-center ">
+	<h3 class=" firstshadow text-danger">Snaeker Sự Lựa Chọn Của Giới Trẻ</h3>
+</div>
+<br><br>
+<div class="controler">
+	<div class="row hieul ">
+		<div class="col-3 acd"
+			*ngFor="let product of products | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+			<div class="card">
+				<a href="#"><img class="card-img-top" src="{{product.img}}" alt=""></a>
+					<div class="card-body">
+						<h4 class="card-title">
+							<a href="#">{{product.name}}</a>
+						</h4>
+
+						<h5>${{product.price}} </h5>
+
+					</div>
+					<div class="card-footer">
+						<button  class="btn btn-primary d-block w-100 btn-lg" routerLink="/product/{{product.id}}">Thông tin</button><br>
+						</div>
+					</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="pagecss">
+		<ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="products.length"></ngb-pagination>
+	</div>
+	<footer class="py-5 bg-dark">
+		<div class="container">
+			<p class="m-0 text-center text-white">Hotline : Phạm Văn Hiếu</p><br>
+			<p class="m-0 text-center text-white">Snaker Cool ngầu! Sự lựa chọn của các bạn trẻ</p>
+		</div>
+
+	</footer>

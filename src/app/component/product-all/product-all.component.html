@@ -1,0 +1,39 @@
+
+
+<header class="d-flex mb-3 pt-5 justifly-content-between abc">
+  <button  class="btn btn-danger" routerLink="/product/add">Add Product</button><br>
+</header>
+
+<table border="2" style=" width:  95%; border-collapse: separate;">
+	<thead class="thead-dark">
+		<tr>
+
+			<th scope="col">ID</th>
+			<th scope="col">Product name</th>
+			<th scope="col">Price</th>
+			<!-- <th scope="col">Desc</th> -->
+			<!-- <th width="300" scope="col">Img</th> -->
+
+			<th>Sửa</th>
+			<th>Delete</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let product of products | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+			<!-- <th scope="row">2</th> -->
+
+			<td>{{product.id}}</td>
+			<td>{{product.name}}</td>
+			<td>${{product.price}}</td>
+			<!-- <td>{{product.desc}}</td> -->
+			<!-- <td><a href="#"><img class="card-img-top" src="{{product.img}}" alt=""></a></td> -->
+
+			<!-- <td> <button  class="btn btn-primary " routerLink="/product/{{product.id}}"> Detail</button></td> -->
+			<td><button routerLink= "/product/edit/{{product.id}}" class="btn btn-danger"> Edit</button></td>
+			<td><button class="btn btn-danger " (click)="removeTteam(product.id)">Delete</button></td>
+		</tr>
+	</tbody>
+</table>
+<br>
+<br>
+<ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="products.length"></ngb-pagination>

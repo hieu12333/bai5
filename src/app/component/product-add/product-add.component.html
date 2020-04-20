@@ -1,0 +1,28 @@
+<app-index-admin></app-index-admin>
+<div class="container abc">
+ <form class="jumbotron"> 
+  <div class="form-group">
+    <label for="">Name</label>
+    <input type="text" class="form-control" name="name" [(ngModel)]= "product.name">
+  </div>
+  <div class="form-group">
+    <label for="">Price</label>
+    <input type="number" class="form-control" name="price" [(ngModel)]= "product.price">
+  </div>
+  <div class="form-group">
+    <label for="">Desc</label>
+    <input type="text" class="form-control" name="desc" [(ngModel)]= "product.desc">
+  </div>
+  <div class="form-group">
+    <label for="">Img</label>
+    <input type="text" class="form-control" name="img" [(ngModel)]= "product.img">
+  </div>
+  <div>
+<img [src]="url" height="200"> <br/>
+
+   <input type='file' (change)="onSelectFile($event)">
+   </div><br>
+  <button (click)="addNewProduct()"  class="btn btn-primary" >Add Product</button>
+</form> 
+</div>
+

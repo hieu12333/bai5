@@ -1,0 +1,20 @@
+table, th, td {
+  border: 1px solid black;
+}
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 15px;
+}
+.table{
+  margin: 0 30px;
+  border : "2" ;
+  style: width 95%;
+   border-collapse: separate;
+}
+.abc{
+margin-top: 50px;
+
+}
