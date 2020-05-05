@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Product } from "../../Product";
 import { ProductService } from "../../product.service";
 import { Router } from "@angular/router";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
 @Component({
   selector: "app-product-add",
@@ -11,34 +12,36 @@ import { Router } from "@angular/router";
 export class ProductAddComponent implements OnInit {
   product: Product = new Product();
   url: String;
+
+  registerForm: FormGroup;
+  submitted = false;
   constructor(
-  private productService: ProductService,
-   private route: Router) {}
+    private productService: ProductService,
+    private route: Router,
+    private formBuilder: FormBuilder
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.registerForm = this.formBuilder.group({
+      name: ["", [Validators.required, Validators.minLength(3)]],
+      price: ["", [Validators.required, Validators.minLength(3)]],
+      desc: ["", [Validators.required, Validators.minLength(5)]],
+      img: ["", [Validators.required, Validators.minLength(15)]]
+    });
+  }
+  get f() {
+    return this.registerForm.controls;
+  }
+
   addNewProduct() {
-    this.productService.addProduct(this.product).subscribe(data => {
-      // console.log(data);
-       this.route.navigateByUrl('/admin/product');
-       });
-        alert("Bạn đã thêm thành công!");
-  }
+    this.submitted = true;
 
-
- 
-      
-      onSelectFile(event) { // called each time file input changes
-      if (event.target.files && event.target.files[0]) {
-      var reader = new FileReader();
-
-      reader.readAsDataURL(event.target.files[0]) // read file as data url
-
-      reader.onload = (event) => { // called once readAsDataURL is completed
-      this.url = event.target.result;
-      
+    if (this.registerForm.invalid) {
+      return;
     }
-
+    alert(" ADD SUCCESS!! :-)");
+    this.productService.addProduct(this.product).subscribe(data => {this.route.navigateByUrl("/admin/product");
+    });
+   
   }
-}
-
 }

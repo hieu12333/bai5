@@ -8,6 +8,10 @@ export class ProductService {
   api = "https://5e79b9dc17314d001613350c.mockapi.io/product1";
   constructor(private http: HttpClient) {}
 
+
+  searchProduct(keyword:string): Observable<Product[]> {
+    return this.http.get<Product[]>(`${this.api}?search=${keyword}`);
+  }
   getProduct(id): Observable<Product> {
     return this.http.get<Product>(`${this.api}/${id}`);
   }
@@ -23,4 +27,5 @@ export class ProductService {
   removeProduct(id): Observable<Product> {
     return this.http.delete<Product>(`${this.api}/${id}`);
   }
+  
 }

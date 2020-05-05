@@ -1,39 +1,45 @@
+<div class="ab">
+	<div class="input-group mb-3">
+		<input class="form-control" type="text" name="keyword" [(ngModel)]="keyword"  placeholder="Search for..." aria-label="Search" />
+		<div class="input-group-append">
+			<button  class="btn btn-primary" (click)="search()">
+                  <i class="fas fa-search"></i>
+                    Search
+                  </button>
+		</div>
+	</div>
 
-
-<header class="d-flex mb-3 pt-5 justifly-content-between abc">
-  <button  class="btn btn-danger" routerLink="/product/add">Add Product</button><br>
+	<header class="d-flex mb-3 pt-5 justifly-content-between abc">
+		<button  class="btn btn-danger" routerLink="/product/add">Add Product</button><br>
 </header>
 
-<table border="2" style=" width:  95%; border-collapse: separate;">
-	<thead class="thead-dark">
-		<tr>
+		<table border="2" style=" width:  95%; border-collapse: separate;">
+			<thead class="thead-dark">
+				<tr>
 
-			<th scope="col">ID</th>
-			<th scope="col">Product name</th>
-			<th scope="col">Price</th>
-			<!-- <th scope="col">Desc</th> -->
-			<!-- <th width="300" scope="col">Img</th> -->
+					<th scope="col">ID</th>
+					<th scope="col">Product name</th>
+					<th scope="col">Price</th>
+					<th scope="col">Img</th>
 
-			<th>Sửa</th>
-			<th>Delete</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr *ngFor="let product of products | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
-			<!-- <th scope="row">2</th> -->
+					<th>Sửa</th>
+					<th>Delete</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let product of products | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
 
-			<td>{{product.id}}</td>
-			<td>{{product.name}}</td>
-			<td>${{product.price}}</td>
-			<!-- <td>{{product.desc}}</td> -->
-			<!-- <td><a href="#"><img class="card-img-top" src="{{product.img}}" alt=""></a></td> -->
 
-			<!-- <td> <button  class="btn btn-primary " routerLink="/product/{{product.id}}"> Detail</button></td> -->
-			<td><button routerLink= "/product/edit/{{product.id}}" class="btn btn-danger"> Edit</button></td>
-			<td><button class="btn btn-danger " (click)="removeTteam(product.id)">Delete</button></td>
-		</tr>
-	</tbody>
-</table>
-<br>
-<br>
-<ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="products.length"></ngb-pagination>
+					<td>{{product.id}}</td>
+					<td>{{product.name}}</td>
+					<td>${{product.price}}</td>
+					<td> <img  src="{{product.img}}" alt="" width="100px" > </td>
+
+					<td><button routerLink= "/product/edit/{{product.id}}" class="btn btn-danger"> Edit</button></td>
+					<td><button class="btn btn-danger " (click)="removeTteam(product.id)">Delete</button></td>
+				</tr>
+			</tbody>
+		</table>
+		<br>
+		<br>
+		<ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="products.length"></ngb-pagination></div>

@@ -1,28 +1,46 @@
 <app-index-admin></app-index-admin>
 <div class="container abc">
- <form class="jumbotron"> 
-  <div class="form-group">
-    <label for="">Name</label>
-    <input type="text" class="form-control" name="name" [(ngModel)]= "product.name">
-  </div>
-  <div class="form-group">
-    <label for="">Price</label>
-    <input type="number" class="form-control" name="price" [(ngModel)]= "product.price">
-  </div>
-  <div class="form-group">
-    <label for="">Desc</label>
-    <input type="text" class="form-control" name="desc" [(ngModel)]= "product.desc">
-  </div>
-  <div class="form-group">
-    <label for="">Img</label>
-    <input type="text" class="form-control" name="img" [(ngModel)]= "product.img">
-  </div>
-  <div>
-<img [src]="url" height="200"> <br/>
+	<div class="jumbotron">
+     <h1 class=" firstshadow text-danger">Thêm mới sản phẩm</h1>
+    <form [formGroup]="registerForm" (ngSubmit)="addProduct()">
+		<div class="form-group">
+			<label for="">Name</label>
+			<input type="text" formControlName="name" class="form-control" name="name" [(ngModel)]= "product.name"  [ngClass]="{ 'is-invalid': submitted && f.name.errors }">
 
-   <input type='file' (change)="onSelectFile($event)">
-   </div><br>
-  <button (click)="addNewProduct()"  class="btn btn-primary" >Add Product</button>
-</form> 
-</div>
+			<div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+				<div *ngIf="f.name.errors.required"> Tên sản phẩm cần điền </div>
+				<div *ngIf="f.name.errors.minlength"> Tên sản phẩm cần điền </div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="">Price</label>
+			<input   width="00px" type="number" class="form-control" name="price" [(ngModel)]= "product.price" formControlName="price"   [ngClass]="{ 'is-invalid': submitted && f.price.errors }">
+			<div *ngIf="submitted && f.price.errors" class="invalid-feedback">
+				<div *ngIf="f.price.errors.required"> Giá cần điền </div>
+				<div *ngIf="f.price.errors.minlength">Giá sản phẩm phải có hơn 3 chữ số </div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="">Desc</label>
+			<input  width="200px"  type="text" class="form-control"name="desc" [(ngModel)]= "product.desc" formControlName="desc"   [ngClass]="{ 'is-invalid': submitted && f.desc.errors }">
+			<div *ngIf="submitted && f.desc.errors" class="invalid-feedback">
+				<div *ngIf="f.desc.errors.required"> Nội dung Cần điền </div>
+				<div *ngIf="f.desc.errors.minlength">nội dung sản phẩm phải có hơn 5 kí tự </div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="">Img</label>
+			<input  width="200px"  type="text" class="form-control"name="img" [(ngModel)]= "product.img" formControlName="img"   [ngClass]="{ 'is-invalid': submitted && f.img.errors }">
+			<div *ngIf="submitted && f.img.errors" class="invalid-feedback">
+				<div *ngIf="f.img.errors.required"> Ảnh cần điền </div>
+				<div *ngIf="f.desc.errors.minlength">chưa chọn ảnh chính xác </div>
+			</div>
+		</div>
+		<div>
 
+			<img src="{{product.img}}" height="200"> <br/>
+   </div>
+			<button (click)="addNewProduct()"  class="btn btn-primary" >Add Product</button>
+    </form>
+		</div>
+	</div>

@@ -7,11 +7,15 @@ import { ProductService } from "../../product.service";
   styleUrls: ["./product-all.component.css"]
 })
 export class ProductAllComponent implements OnInit {
-
+  keyword;
   page = 1;
   pageSize = 8;
   products: Product[];
-  constructor(private productService: ProductService) {}
+  constructor(
+    
+    private productService: ProductService
+    
+    ) {}
 
   ngOnInit() {
     this.getProducts();
@@ -19,18 +23,20 @@ export class ProductAllComponent implements OnInit {
   getProducts() {
     this.productService.getProducts().subscribe(data => {
       //  console.log(data);
-      this.products = data
+      this.products = data;
     });
   }
-
+  search() {
+    return this.productService.searchProduct(this.keyword).subscribe(data => (this.products = data));
+  }
 
   removeTteam(id) {
     this.productService.removeProduct(id).subscribe(response => {
       console.log(response);
       this.products = this.products.filter(
         product => product.id != response.id
-      )
+      );
     });
-     alert("Bạn đã xóa thành công!");
+    alert("Bạn đã xóa thành công!");
   }
 }
