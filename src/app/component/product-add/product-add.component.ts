@@ -24,7 +24,7 @@ export class ProductAddComponent implements OnInit {
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
       name: ["", [Validators.required, Validators.minLength(3)]],
-      price: ["", [Validators.required, Validators.minLength(3)]],
+      price: ["", [Validators.required, Validators.minLength(3),Validators.required, Validators.pattern("^{0-9}{0-5}$")]],
       desc: ["", [Validators.required, Validators.minLength(5)]],
       img: ["", [Validators.required, Validators.minLength(15)]]
     });

@@ -9,7 +9,7 @@
 
 			<div *ngIf="submitted && f.name.errors" class="invalid-feedback">
 				<div *ngIf="f.name.errors.required"> Tên sản phẩm cần điền </div>
-				<div *ngIf="f.name.errors.minlength"> Tên sản phẩm cần điền </div>
+				<div *ngIf="f.name.errors.minLength"> Tên sản phẩm phải hơn 3 ký tự </div>
 			</div>
 		</div>
 		<div class="form-group">
@@ -17,7 +17,7 @@
 			<input   width="00px" type="number" class="form-control" name="price" [(ngModel)]= "product.price" formControlName="price"   [ngClass]="{ 'is-invalid': submitted && f.price.errors }">
 			<div *ngIf="submitted && f.price.errors" class="invalid-feedback">
 				<div *ngIf="f.price.errors.required"> Giá cần điền </div>
-				<div *ngIf="f.price.errors.minlength">Giá sản phẩm phải có hơn 3 chữ số </div>
+				<div *ngIf="f.price.errors.pattern">Giá sản phẩm phải là số dương! </div>
 			</div>
 		</div>
 		<div class="form-group">
@@ -25,15 +25,15 @@
 			<input  width="200px"  type="text" class="form-control"name="desc" [(ngModel)]= "product.desc" formControlName="desc"   [ngClass]="{ 'is-invalid': submitted && f.desc.errors }">
 			<div *ngIf="submitted && f.desc.errors" class="invalid-feedback">
 				<div *ngIf="f.desc.errors.required"> Nội dung Cần điền </div>
-				<div *ngIf="f.desc.errors.minlength">nội dung sản phẩm phải có hơn 5 kí tự </div>
+				<div *ngIf="f.desc.errors.minLength">nội dung sản phẩm phải có hơn 5 kí tự </div>
 			</div>
 		</div>
 		<div class="form-group">
 			<label for="">Img</label>
 			<input  width="200px"  type="text" class="form-control"name="img" [(ngModel)]= "product.img" formControlName="img"   [ngClass]="{ 'is-invalid': submitted && f.img.errors }">
 			<div *ngIf="submitted && f.img.errors" class="invalid-feedback">
-				<div *ngIf="f.img.errors.required"> Ảnh cần điền </div>
-				<div *ngIf="f.desc.errors.minlength">chưa chọn ảnh chính xác </div>
+				<div *ngIf="f.img.errors.required"> Chọn ảnh  </div>
+				 <div *ngIf="f.desc.errors.minLength">chưa chọn ảnh chính xác </div>
 			</div>
 		</div>
 		<div>
